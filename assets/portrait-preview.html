@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>球员画法逐笔小样</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#d7dadc;color:#2a2d32;font-family:"Microsoft YaHei",sans-serif}canvas{position:fixed;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--scale,1))}.controls{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:12px;align-items:center;background:#eef0efee;padding:10px 16px;border:1px solid #b6bfc1;border-radius:4px;max-width:94vw}button{font:inherit;font-size:12px;white-space:nowrap;padding:7px 12px;border:1px solid #aeb8be;border-radius:3px;background:transparent;color:#2a2d32;cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #23436b;outline-offset:2px}input{width:min(30vw,280px);accent-color:#23436b}output{font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}#error{position:fixed;left:20px;top:20px;color:#9c3530;font-size:14px}</style></head><body><canvas id="art" width="1920" height="1080" aria-label="球员逐笔绘画画面"></canvas><div class="controls"><button id="play">暂停</button><button id="replay">重画</button><button id="end">完成态</button><input id="seek" type="range" min="0" value="0" aria-label="绘画进度"><output id="progress"></output></div><p id="error" role="alert"></p>
+<style>[hidden]{display:none!important}</style><script>
+(async()=>{
+const PROFILE=__PROFILE__;
+const bytes=Uint8Array.from(atob('__PAYLOAD__'),c=>c.charCodeAt(0));
+const PENCIL_DATA=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+__SETTINGS__
+__RUNTIME__
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function css(k){return k==='--graphite'?'#2A2D32':k==='--paper2'?'#e4e6e7':'#D7DADC';}
+const canvas=document.getElementById('art'),ctx=canvas.getContext('2d'),a=PROFILE.art;
+const d=PENCIL_DATA[PROFILE.drawing],scale=Math.min(760/d.w,910/d.h);
+const stroke={key:PROFILE.drawing,x:1030+(760-d.w*scale)/2,y:72+(910-d.h*scale)/2,scale,t0:0,t1:a.drawMs};
+const duration=a.drawMs+a.holdMs,seek=document.getElementById('seek'),play=document.getElementById('play');seek.max=duration;
+let elapsed=RM?duration:0,started=performance.now()-elapsed,paused=RM;
+document.title=PROFILE.player.name+' · 逐笔画法小样';
+const labels={'colored-pencil':'彩色铅笔',graphite:'石墨素描',watercolor:'水彩',crayon:'蜡笔',ink:'钢笔线描'};
+function draw(ms){
+ ctx.clearRect(0,0,1920,1080);ctx.fillStyle='#D7DADC';ctx.fillRect(0,0,1920,1080);
+ ctx.fillStyle='#666B73';ctx.font='28px "Microsoft YaHei"';ctx.fillText(PROFILE.player.period,110,214);
+ ctx.fillStyle='#2A2D32';ctx.font='88px SimSun,serif';ctx.fillText(PROFILE.player.name,108,342);
+ ctx.font='37px Georgia,serif';ctx.fillText(PROFILE.player.latinName,110,412);
+ ctx.font='30px "Microsoft YaHei"';ctx.fillText(PROFILE.label||((labels[a.medium]||a.medium)+' · '+(a.drawingMode==='sketch'?'概括':'精画')),110,538);
+ ctx.fillStyle='#666B73';ctx.font='25px "Microsoft YaHei"';(PROFILE.notes||[]).slice(0,3).forEach((n,i)=>ctx.fillText(n,110,630+i*48));
+ drawPencil(ctx,stroke,Math.min(ms,a.drawMs),1);
+ const e=drawingFor(PROFILE.drawing);
+ canvas.dataset.elapsed=String(Math.round(ms));canvas.dataset.drawMs=String(a.drawMs);canvas.dataset.holdMs=String(a.holdMs);canvas.dataset.paths=String(e.pathDone);canvas.dataset.totalPaths=String(e.d.paths.length);canvas.dataset.marks=String(e.done);canvas.dataset.totalMarks=String(e.count);
+ seek.value=ms;document.getElementById('progress').textContent=(Math.min(1,ms/a.drawMs)*100).toFixed(0)+'%';play.textContent=paused?'播放':'暂停';
+}
+function frame(now){if(!paused){elapsed=Math.min(duration,now-started);if(elapsed===duration)paused=true;}draw(elapsed);requestAnimationFrame(frame);}
+function at(ms){paused=true;elapsed=ms;draw(ms);}
+play.onclick=()=>{if(elapsed>=duration)elapsed=0;paused=!paused;started=performance.now()-elapsed;draw(elapsed);};
+document.getElementById('replay').onclick=()=>{pencilCache.clear();elapsed=0;started=performance.now();paused=false;draw(0);};
+document.getElementById('end').onclick=()=>at(a.drawMs);
+seek.oninput=()=>at(Number(seek.value));
+function fit(){document.documentElement.style.setProperty('--scale',Math.min(innerWidth/1920,innerHeight/1080));}
+addEventListener('resize',fit);fit();if(new URLSearchParams(location.search).get('controls')==='0')document.querySelector('.controls').hidden=true;
+draw(elapsed);requestAnimationFrame(frame);
+})().catch(e=>{document.getElementById('error').textContent=e.message;console.error(e);});
+</script></body></html>

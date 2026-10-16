@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "player": {
+    "name": "凯文·德布劳内",
+    "latinName": "Kevin De Bruyne",
+    "intro": "从切尔西的板凳，到曼城的高峰，再到那不勒斯。同一张画纸，不同的落笔。",
+    "asOf": "演示沿用原版资料",
+    "accent": "#6CABDD"
+  },
+  "intro": {
+    "drawing": "napoli"
+  },
+  "timing": {
+    "startMs": 120,
+    "portraitMs": 6800,
+    "introMs": 3800,
+    "ballMs": 2300,
+    "holdMs": 1000
+  },
+  "career": {
+    "summary": "画法演示选取三个时期",
+    "total": {
+      "value": 201,
+      "label": "职业生涯总进球"
+    },
+    "note": "数字仅沿用已提供的原版页面，供画法比较。完整新片需按截止日期重新核验。",
+    "rows": [
+      {
+        "club": "切尔西",
+        "period": "2012–2014",
+        "accent": "#0A4595",
+        "appearances": 9,
+        "goals": 0,
+        "crest": "crest_chelsea",
+        "highlights": "两度效力，出场寥寥",
+        "national": false,
+        "appearancesSuffix": ""
+      },
+      {
+        "club": "曼城",
+        "period": "2015–2025",
+        "accent": "#6CABDD",
+        "appearances": 422,
+        "goals": 108,
+        "crest": "crest_city",
+        "highlights": "170 次助攻，19 座奖杯",
+        "national": false,
+        "appearancesSuffix": ""
+      },
+      {
+        "club": "那不勒斯",
+        "period": "2025–",
+        "accent": "#12A0D7",
+        "appearances": 21,
+        "goals": 6,
+        "crest": "crest_napoli",
+        "highlights": "2025–26 意甲亚军，新赛季进行中",
+        "national": false,
+        "appearancesSuffix": "+"
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "year": "2013",
+      "title": "切尔西",
+      "subtitle": "Chelsea FC",
+      "accent": "#0A4595",
+      "body": "年轻时期的面貌与短发，配合切尔西阶段的 15 号。先画板凳席和轮廓，再逐笔画出脸、球衣、双腿与球鞋。",
+      "facts": [
+        {
+          "value": "15",
+          "label": "切尔西时期号码"
+        },
+        {
+          "value": "逐笔",
+          "label": "轮廓 → 上色 → 加深"
+        }
+      ],
+      "visual": "bench",
+      "drawing": "chelsea",
+      "caption": "2013–14 赛季",
+      "shirtNumber": 15,
+      "benchAppearances": 9
+    },
+    {
+      "year": "2019",
+      "title": "巅峰",
+      "subtitle": "Manchester City",
+      "accent": "#6CABDD",
+      "body": "曼城时期的发型、面貌与浅蓝色球衣。使用同一组人物坐标，比较彩铅、石墨、水彩、蜡笔和钢笔的不同落笔效果。",
+      "facts": [
+        {
+          "value": "5",
+          "label": "可选择画法"
+        },
+        {
+          "value": "16:9",
+          "label": "横版画面"
+        }
+      ],
+      "visual": "portrait",
+      "drawing": "city2020",
+      "caption": "2019–20 赛季"
+    },
+    {
+      "year": "2023",
+      "title": "三冠王",
+      "subtitle": "Istanbul · 10 June 2023",
+      "accent": "#6CABDD",
+      "body": "2023 年曼城获得英超、足总杯与欧冠冠军。三座奖杯分别画出自己的真实轮廓，再逐笔上色与刻画高光。",
+      "facts": [
+        {
+          "value": "2023",
+          "label": "曼城三冠王"
+        },
+        {
+          "value": "3",
+          "label": "不同的奖杯造型"
+        }
+      ],
+      "visual": "trophies",
+      "drawing": "trophies",
+      "caption": "2022–23",
+      "trophyLabels": [
+        {
+          "text": "英超",
+          "x": 195
+        },
+        {
+          "text": "欧冠",
+          "x": 508
+        },
+        {
+          "text": "足总杯",
+          "x": 825
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "title": "那不勒斯",
+      "subtitle": "SSC Napoli",
+      "accent": "#12A0D7",
+      "body": "以 2025 年 9 月的全身参考为基准：大背头、深蓝球衣、EA7、MSC、11 号短裤和红色球鞋。这里比较不同画法如何逐笔表现同一个人物。",
+      "facts": [
+        {
+          "value": "2025.09",
+          "label": "画像参考时期"
+        },
+        {
+          "value": "11",
+          "label": "参考短裤号码"
+        }
+      ],
+      "visual": "portrait",
+      "drawing": "napoli",
+      "caption": "2025.09 · 欧冠",
+      "age": "34 岁"
+    }
+  ],
+  "stats": {
+    "metrics": [
+      {
+        "value": 422,
+        "label": "曼城出场，2015–2025"
+      },
+      {
+        "value": 108,
+        "label": "曼城进球"
+      },
+      {
+        "prefix": "No.",
+        "value": 2,
+        "label": "英超历史助攻榜"
+      },
+      {
+        "value": 237,
+        "label": "达成英超 100 助攻的场次"
+      }
+    ],
+    "honors": [
+      {
+        "name": "英超",
+        "count": 6
+      },
+      {
+        "name": "欧冠",
+        "count": 1
+      },
+      {
+        "name": "足总杯",
+        "count": 2
+      },
+      {
+        "name": "联赛杯",
+        "count": 5
+      },
+      {
+        "name": "世俱杯",
+        "count": 1
+      },
+      {
+        "name": "欧洲超级杯",
+        "count": 1
+      },
+      {
+        "name": "社区盾",
+        "count": 3
+      },
+      {
+        "name": "德国杯",
+        "count": 1
+      },
+      {
+        "name": "德国超级杯",
+        "count": 1
+      },
+      {
+        "name": "比甲",
+        "count": 1
+      },
+      {
+        "name": "比利时杯",
+        "count": 1
+      },
+      {
+        "name": "比利时超级杯",
+        "count": 1
+      }
+    ],
+    "individual": [
+      {
+        "period": "2020 · 2021",
+        "name": "PFA 球员年度最佳"
+      },
+      {
+        "period": "2019–20 · 2021–22",
+        "name": "英超赛季最佳球员"
+      },
+      {
+        "period": "2015",
+        "name": "德国足球先生"
+      },
+      {
+        "period": "2018",
+        "name": "世界杯季军"
+      }
+    ],
+    "note": "数字仅沿用已提供的原版页面，供画法比较。完整新片需按截止日期重新核验。"
+  },
+  "art": {
+    "medium": "colored-pencil",
+    "detail": 85,
+    "drawMs": 5200,
+    "holdMs": 1000
+  },
+  "artVariants": {
+    "napoli": {
+      "ink": "ink_napoli"
+    },
+    "chelsea": {
+      "ink": "ink_chelsea"
+    },
+    "city2020": {
+      "ink": "ink_city2020"
+    }
+  }
+}

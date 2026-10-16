@@ -1,0 +1,4 @@
+interface:
+  display_name: "球员生涯绘画动画"
+  short_description: "保留真人动作与五官，制作素描或宽笔厚涂生涯动画，支持可读大字与逐章视频交付"
+  default_prompt: "使用 $football-art-story，沿用参考作品制作或修改球员生涯绘画动画，保留身份与动作，按要求选择素描或大面积厚涂，并支持逐章交付。"
